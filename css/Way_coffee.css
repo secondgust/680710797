@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 30px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
+}
+
+.navbar_logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+}
+.botton_outline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    font-size: 0.82rem;
+    color: #555;
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.main_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 30px;
+}
+
+.image_grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+}
+
+.image_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image_box:first-child { grid-row: span 2; }
+
+.shop_info { display: flex; flex-direction: column; gap: 10px; }
+.shop_name { font-size: 1.6rem; font-weight: 700; }
+
+.rating_box { display: flex; align-items: center; gap: 6px; }
+.rating_score { font-weight: 700; color: #d4a24e; }
+.rating_star { color: #d4a24e; }
+.review_count { font-size: 0.78rem; color: #999; }
+
+.action_buttons {
+     display: flex;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.action_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.65rem;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.action_btn i { 
+    font-size: 1.15rem; 
+}
+
+.action_btn.active {
+    color: #e74c3c;
+    transform: scale(1.1);
+}
+.action_btn.active i {
+    color: #e74c3c;
+}
+.action_btn.active, 
+.action_btn.active i, 
+.action_btn.active span {
+    color: #ff4757 !important;
+}
+.action_btn i {
+    transition: transform 0.2s ease;
+}
+.action_btn.active i {
+    transform: scale(1.2);
+}
+
+.infor_list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.info_row { display: flex; gap: 8px; font-size: 0.82rem; color: #555; }
+.status_open { color: #27ae60; font-weight: 500; }
+
+.shop_desc {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.7;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+    margin-top: 10px;
+}
+
+.content_section { max-width: 1000px; margin: 0 auto; padding: 0 20px 40px; }
+.card_grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.info_card { border: 1px solid #e5e5e3; border-radius: 12px; padding: 20px; }
+.card_title { font-size: 1rem; margin-bottom: 14px; }
+
+.hours-list { list-style: none; }
+.hours-list li { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 5px 0; 
+    font-size: 0.82rem; 
+    border-bottom: 1px solid #f0f0ee; 
+}
+
+.tags_box { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tag-item { 
+    font-size: 0.72rem; 
+    padding: 4px 12px; 
+    background: #f3f3f1; 
+    border-radius: 14px; 
+}
+
+.footer { text-align: center; padding: 30px; border-top: 1px solid #ddd; }
+
+@media (max-width: 900px) {
+    .main_container { grid-template-columns: 1fr; }
+    .card_grid { grid-template-columns: 1fr; }
+}
