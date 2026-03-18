@@ -52,17 +52,105 @@ a {
     margin: 0 auto;
     padding: 24px 20px 30px;
 }
-
-.image_grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 8px;
+/*เอา image grid ออก*/
+.carousel_wrapper {
+    position: relative;
+    width: 100%;
+    /* กำหนดสัดส่วนภาพให้เหมือนเดิม (4:3) หรือปรับตามใจชอบ */
+    aspect-ratio: 4 / 3; 
     border-radius: 12px;
     overflow: hidden;
-    aspect-ratio: 4 / 3;
+    background-color: #f9f9f9;
 }
 
+/* แถวที่เก็บ Card ภาพ */
+.carousel_track {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* แต่ละหน้าของสไลด์ */
+.carousel_card {
+    min-width: 100%; /* บังคับให้ 1 card เต็มพื้นที่ wrapper */
+    height: 100%;
+}
+
+.carousel_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* สำคัญ: ทำให้ภาพขยายเต็มโดยไม่แตกหรือบิดเบี้ยว */
+    display: block;
+}
+
+/* ปุ่มกดควบคุม (Nav Buttons) */
+.nav_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(4px); /* สไตล์กระจกฝ้ามินิมอล */
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    color: #333;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav_btn:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev_btn { left: 15px; }
+.next_btn { right: 15px; }
+
+.carousel_dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: #fff;
+    width: 20px; /* ยืดออกให้ดู Modern */
+    border-radius: 10px;
+}
+
+/* ปรับปรุง Responsive สำหรับมือถือ */
+@media (max-width: 600px) {
+    .carousel_wrapper {
+        aspect-ratio: 1 / 1; /* มือถือใช้ภาพสี่เหลี่ยมจตุรัสจะดูเต็มตากว่า */
+    }
+    .nav_btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
+/*จบตรงนี้*/
 .image_box img {
     width: 100%;
     height: 100%;
@@ -161,4 +249,3 @@ a {
 @media (max-width: 900px) {
     .main_container { grid-template-columns: 1fr; }
     .card_grid { grid-template-columns: 1fr; }
-}
