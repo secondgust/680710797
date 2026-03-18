@@ -22,17 +22,24 @@
     </header>
 
     <section class="main_container">
-        <div class="image_grid">
-            <div class="image_box">
+        
+        <div class="carousel_wrapper">
+            <div class="carousel_track">
+                <div class="carousel_card">
                 <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweogasy7IhXnAR27ZG2kQQ2hmUrwDTNvmb5_xio41H_uhZbOdB0wcf0nFApBmqwu4z1fufanQDMQdhyk7tQNz6KqPEad1cMPdJOgsu1oVPmkjOrsSBHsO9S_Yk4WTOTWN5BFLL7d=w408-h276-k-no" alt="capedium_1">
             </div>
-            <div class="image_box">
+            <div class="carousel_card">
                 <img src="https://www.tripgether.com/wp-content/uploads/2022/02/Way4.jpg" alt="capedium_2">
             </div>
-            <div class="image_box">
+            <div class="carousel_card">
                 <img src="https://www.tripgether.com/wp-content/uploads/2022/02/Way8.jpg" alt="capedium_3">
             </div>
         </div>
+            
+            <button class="nav_btn prev_btn"><i class='bx bx-chevron-left'></i></button>
+            <button class="nav_btn next_btn"><i class='bx bx-chevron-right'></i></button>
+        </div>
+        
         <div class="shop_info">
             <h1 class="shop_name">WAY COFFEE</h1>
             <div class="rating_box">
@@ -141,5 +148,33 @@
             ข้อมูลอ้างอิงจาก <a href="https://www.tripgether.com" target="_blank" style="color:inherit; text-decoration:underline; text-underline-offset:2px;">tripgether.com</a>
         </p>
     </footer>
+    <script>
+            const track = document.querySelector('.carousel_track');
+            const cards = document.querySelectorAll('.carousel_card');
+            const nextBtn = document.querySelector('.next_btn');
+            const prevBtn = document.querySelector('.prev_btn');
+    
+            let counter = 0;
+            const size = 100; // เลื่อนทีละ 100%
+    
+            nextBtn.addEventListener('click', () => {
+                if (counter >= cards.length - 1) {
+                    counter = 0; // วนกลับไปรูปแรก
+                } else {
+                    counter++;
+                }
+                track.style.transform = 'translateX(' + (-size * counter) + '%)';
+            });
+    
+            prevBtn.addEventListener('click', () => {
+                if (counter <= 0) {
+                    counter = cards.length - 1; // วนไปรูปสุดท้าย
+                } else {
+                    counter--;
+                }
+                track.style.transform = 'translateX(' + (-size * counter) + '%)';
+            });
+        </script>
+    
 </body>
 </html>
